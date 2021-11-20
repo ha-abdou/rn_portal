@@ -3,7 +3,14 @@
   "name": "portal",
   "workspaces": [
     "packages/parser",
-    "packages/renderer"
+    "packages/renderer",
+    "packages/devtools/server"
   ],
-  "scripts": {}
+  "scripts": {
+    "start": "concurrently --kill-others-on-fail \"yarn start:dev:server\"",
+    "start:server": "yarn workspace dev_server start:dev"
+  },
+  "dependencies": {
+    "concurrently": "^6.4.0"
+  }
 }
