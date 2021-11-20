@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "name": "portal",
+  "workspaces": [
+    "packages/parser",
+    "packages/renderer"
+  ],
+  "scripts": {}
+}
