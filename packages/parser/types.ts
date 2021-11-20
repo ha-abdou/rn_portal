@@ -58,7 +58,7 @@ export interface IParser {
   parser: TFiberParser;
 }
 
-export interface IParsedFiber {
+export interface IParsedFiber<Options = { [key: string]: unknown }> {
   type: {
     name: string;
     displayName?: string;
@@ -67,7 +67,7 @@ export interface IParsedFiber {
   key: null | string;
   props?: { [key: string]: unknown };
   children?: IParsedFiber[] | null;
-  options?: { [key: string]: unknown };
+  options?: Options;
   walkerOptionsForNextSibling?: TWalkerOptions;
 }
 
