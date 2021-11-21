@@ -5,12 +5,14 @@
     "packages/parser",
     "packages/renderer",
     "packages/devtools/server",
-    "packages/devtools/dashboard"
+    "packages/devtools/dashboard",
+    "packages/devtools/RNApp"
   ],
   "scripts": {
-    "start": "concurrently --kill-others-on-fail \"yarn start:server\" \"yarn start:dashboard\"",
+    "start": "concurrently --kill-others-on-fail \"yarn start:server\" \"yarn start:dashboard\" \"yarn start:rnapp\"",
     "start:server": "yarn workspace @portal/dev_server start:dev",
-    "start:dashboard": "yarn workspace @portal/dev_dashboard start"
+    "start:dashboard": "yarn workspace @portal/dev_dashboard start",
+    "start:rnapp": "yarn workspace @portal/dev_rnapp start"
   },
   "dependencies": {
     "concurrently": "^6.4.0"
