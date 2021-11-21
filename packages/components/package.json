@@ -1,12 +1,12 @@
 {
-  "name": "@portal/renderer",
+  "name": "@portal/components",
   "version": "1.0.0",
-  "main": "index.tsx",
+  "main": "index.ts",
   "license": "MIT",
   "dependencies": {
     "@types/react-native": "^0.66.5"
   },
   "peerDependencies": {
-    "react-native-web": "*"
+    "react-native": "*"
   }
 }
