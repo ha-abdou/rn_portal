@@ -9,8 +9,8 @@
   ],
   "scripts": {
     "start": "concurrently --kill-others-on-fail \"yarn start:server\" \"yarn start:dashboard\"",
-    "start:server": "yarn workspace dev_server start:dev",
-    "start:dashboard": "yarn workspace dev_dashboard start"
+    "start:server": "yarn workspace @portal/dev_server start:dev",
+    "start:dashboard": "yarn workspace @portal/dev_dashboard start"
   },
   "dependencies": {
     "concurrently": "^6.4.0"
