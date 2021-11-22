@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', '@react-native-community'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', '@react-native-community', 'prettier'],
   rules: {
     semi: [2, 'never'],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
