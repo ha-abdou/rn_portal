@@ -1,4 +1,5 @@
-import { View, ViewStyle } from 'react-native'
+import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native'
+
 import { ITree } from './types'
 
 interface IRendererProps {
@@ -6,7 +7,7 @@ interface IRendererProps {
     width?: number
     height?: number
   }
-  style: ViewStyle
+  style: StyleProp<ViewStyle>
   tree: ITree
 }
 const Renderer = ({ tree, viewport, style }: IRendererProps) => {
@@ -16,8 +17,8 @@ const Renderer = ({ tree, viewport, style }: IRendererProps) => {
         {
           width: viewport?.width,
           height: viewport?.height,
-          overflow: 'hidden',
         },
+        styles.containerView,
         style,
       ]}
     >
@@ -25,6 +26,12 @@ const Renderer = ({ tree, viewport, style }: IRendererProps) => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  containerView: {
+    overflow: 'hidden',
+  },
+})
 
 export const parseTree = (tree?: ITree | ITree[] | null): React.ReactNode => {
   if (Array.isArray(tree)) {
@@ -34,6 +41,7 @@ export const parseTree = (tree?: ITree | ITree[] | null): React.ReactNode => {
     const handler = Handlers[tree.type.name]
 
     if (!handler) {
+      // todo error
       console.log('no handler for ', tree)
       return null
     }

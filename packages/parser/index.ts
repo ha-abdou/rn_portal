@@ -1,4 +1,4 @@
-export { default as Parser } from './walker'
+export { default as default } from './walker'
 
 export { addFiberParser } from './parseHandler'
 

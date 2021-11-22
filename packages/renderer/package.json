@@ -4,9 +4,10 @@
   "main": "index.tsx",
   "license": "MIT",
   "dependencies": {
-    "@types/react-native": "^0.66.5"
+    "@types/react-native": "^0.66.5",
+    "@portal/parser": "*"
   },
   "peerDependencies": {
-    "react-native-web": "*"
+    "react-native": "*"
   }
 }
