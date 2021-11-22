@@ -5,7 +5,9 @@ type TWalkerReturn = Promise<IParsedFiber[] | null>
 
 const Walker = async (fiber: TFiberNode | null | undefined, options: TWalkerOptions = {}): TWalkerReturn => {
   try {
-    if (!fiber) return null
+    if (!fiber) {
+      return null
+    }
     const { escapeSibling } = options
     const handler = getFiberParser(fiber)
     const { walkerOptionsForNextSibling, ...parsedFiber } = await handler(fiber, Walker)

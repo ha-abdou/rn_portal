@@ -2,7 +2,7 @@ import { Animated } from 'react-native'
 
 const disableNativeDriver = () => {
   const timing = Animated.timing
-  // @ts-ignore
+  // @ts-ignore timingis not frozen. required to disable native drive
   Animated.timing = (value, config) => {
     return timing(value, { ...config, useNativeDriver: false })
   }

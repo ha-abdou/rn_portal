@@ -1,3 +1,4 @@
+import React from 'react'
 import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native'
 
 import { ITree } from './types'
@@ -50,7 +51,7 @@ export const parseTree = (tree?: ITree | ITree[] | null): React.ReactNode => {
   return null
 }
 
-let Handlers = {
+const Handlers = {
   Array: (cmp: ITree) => parseTree(cmp.children),
   Component: (cmp: ITree) => parseTree(cmp.children),
   String: (cmp: ITree) => cmp.options.value,

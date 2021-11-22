@@ -2,7 +2,7 @@ import { View, StyleSheet, MeasureOnSuccessCallback, StyleProp, ViewStyle } from
 import React, { useRef, useState, useImperativeHandle, forwardRef } from 'react'
 import { w3cwebsocket as W3CWebSocket } from 'websocket'
 
-import Parser, { TFiberNode } from '@portal/parser'
+import Parser, { IParsedFiber, TFiberNode } from '@portal/parser'
 import sleep from './lib/sleep'
 
 interface ICreatPortalOptions {
@@ -17,7 +17,7 @@ interface IPortalProps {
 type ICaptureResult = {
   viewport: { xo: number; yo: number; width: number; height: number; x: number; y: number }
   dt: number
-  tree: any
+  tree: IParsedFiber[]
 }
 
 export interface IPortalRefType {
@@ -36,17 +36,19 @@ const creatPortal = ({ wsParams }: ICreatPortalOptions) => {
 
   return forwardRef<IPortalRefType, IPortalProps>(function Portal({ children, style }, portalRef) {
     const ref = useRef(null)
-    const [_, forceUpdate] = useState(0)
+    const [, forceUpdate] = useState(0)
 
     useImperativeHandle(
       portalRef,
       () => ({
         capture: async () => {
           // force update to get last fiber value of child
-          forceUpdate((_) => _ + 1)
+          forceUpdate((u) => u + 1)
           await sleep(1)
 
-          if (!ref.current) throw new Error('ref not ready, call later')
+          if (!ref.current) {
+            throw new Error('ref not ready, call later')
+          }
 
           return await snap(ref.current)
         },
@@ -68,7 +70,7 @@ const creatPortal = ({ wsParams }: ICreatPortalOptions) => {
 
 const snap = async (ref: View) => {
   try {
-    // @ts-ignore
+    // @ts-ignore _internalFiberInstanceHandleDEV exist but not typed
     const fiber = ref._internalFiberInstanceHandleDEV.child as TFiberNode
     const at = Date.now()
     const [xo, yo, width, height, x, y] = await measure(ref)

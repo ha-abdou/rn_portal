@@ -24,9 +24,15 @@
     "start:dashboard": "yarn workspace @portal/dev_dashboard start",
     "start:rnapp": "yarn workspace @portal/dev_rnapp start",
     "reinstall": "yarn clean:nm && yarn install",
-    "clean:nm": "find . -name \"node_modules\" -type d -prune -exec rm -rf '{}' +"
+    "clean:nm": "find . -name \"node_modules\" -type d -prune -exec rm -rf '{}' +",
+    "lint:check": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
-    "concurrently": "^6.4.0"
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "concurrently": "^6.4.0",
+    "eslint": "^8.3.0",
+    "typescript": "^4.5.2"
   }
 }
