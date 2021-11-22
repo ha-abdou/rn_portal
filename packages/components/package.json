@@ -4,7 +4,9 @@
   "main": "index.ts",
   "license": "MIT",
   "dependencies": {
-    "@types/react-native": "^0.66.5"
+    "@types/react-native": "^0.66.5",
+    "@portal/renderer": "*",
+    "@portal/parser": "*"
   },
   "peerDependencies": {
     "react-native": "*"

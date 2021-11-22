@@ -1,4 +1,4 @@
-import { addFiberParser } from '@portal/parser/parseHandler'
+import { addFiberParser } from '@portal/parser'
 import { addRenderer } from '@portal/renderer'
 
 import ViewParser from './View'
