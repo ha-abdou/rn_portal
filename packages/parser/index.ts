@@ -1,7 +1,7 @@
-export { default as default } from './walker'
+export { default as default } from './src/walker'
 
-export { addFiberParser } from './parseHandler'
+export { addFiberParser } from './src/parseHandler'
 
-export { default as disableNativeDriver } from './disableNativeDriver'
+export { default as disableNativeDriver } from './src/disableNativeDriver'
 
-export * from './types'
+export * from './src/types'

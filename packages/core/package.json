@@ -6,7 +6,8 @@
     "@types/react": "^17.0.35",
     "@types/react-native": "^0.66.5",
     "websocket": "^1.0.34",
-    "@portal/parser": "*"
+    "@portal/parser": "*",
+    "@portal/renderer": "*"
   },
   "peerDependencies": {
     "react": "*",

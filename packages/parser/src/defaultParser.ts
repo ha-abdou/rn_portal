@@ -1,13 +1,13 @@
-import { TFiberParser } from "./types";
+import { TFiberParser } from './types'
 
-import Walker from "./walker";
+import Walker from './walker'
 
-export const defaultTypeName = "Component";
+export const defaultTypeName = 'Component'
 export const defaultParser: TFiberParser = async (fiber, walker: Walker) => {
   const props = {
     ...fiber.memoizedProps,
-  };
-  delete props.children;
+  }
+  delete props.children
 
   return {
     type: {
@@ -18,7 +18,7 @@ export const defaultParser: TFiberParser = async (fiber, walker: Walker) => {
     props,
     key: fiber.key,
     children: await walker(fiber.child),
-  };
-};
+  }
+}
 
-export default defaultParser;
+export default defaultParser

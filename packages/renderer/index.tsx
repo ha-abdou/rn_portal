@@ -61,3 +61,4 @@ export const addRenderer = (typeName: string, render: (cmp: ITree) => React.Reac
 }
 
 export default Renderer
+export * from './types'

@@ -1,11 +1,9 @@
 import React from 'react'
 
-import { parseTree } from '@portal/renderer'
-import { ITree } from '@portal/renderer/types'
+import { parseTree, ITree } from '@portal/renderer'
 
-// todo Component type
 const createBaseRenderer =
-  (Component: any) =>
+  (Component: React.ComponentType) =>
   (cmp: ITree): React.ReactNode => {
     return (
       <Component key={cmp.key} {...cmp.props}>
