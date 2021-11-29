@@ -25,6 +25,7 @@
   "dependencies": {
     "@portal/components": "*",
     "@portal/parser": "*",
+    "@portal/core": "*",
     "get-yarn-workspaces": "^1.0.2",
     "metro-config": "^0.66.2",
     "react": "17.0.2",
