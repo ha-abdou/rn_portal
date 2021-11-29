@@ -12,7 +12,7 @@ export const defaultParser: TFiberParser = async (fiber, walker: Walker) => {
   return {
     type: {
       name: defaultTypeName,
-      displayName: fiber.type.name || fiber.type.displayName,
+      displayName: fiber.type?.name || fiber.type?.displayName,
     },
     fiberDebug: fiber._debugSource,
     props,

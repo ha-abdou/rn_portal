@@ -3,7 +3,7 @@ import { IParser, TFiberNode, TFiberParser } from './types'
 
 const Parsers = new Map<unknown, IParser>()
 
-export const getFiberParser = (fiber: TFiberNode | null | undefined) => {
+export const getFiberParser = (fiber: TFiberNode) => {
   let handler = Parsers.get(fiber.type)
 
   if (handler) {

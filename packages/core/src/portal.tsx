@@ -17,7 +17,7 @@ interface IPortalProps {
 type ICaptureResult = {
   viewport: { xo: number; yo: number; width: number; height: number; x: number; y: number }
   dt: number
-  tree: IParsedFiber[]
+  tree: IParsedFiber[] | null
 }
 
 export interface IPortalRefType {
