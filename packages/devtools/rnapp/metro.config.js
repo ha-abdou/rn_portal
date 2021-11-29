@@ -1,13 +1,13 @@
-const getWorkspaces = require('get-yarn-workspaces');
-const path = require('path');
+const getWorkspaces = require('get-yarn-workspaces')
+const path = require('path')
 
 function getConfig(appDir, options = {}) {
-  const workspaces = getWorkspaces(appDir);
+  const workspaces = getWorkspaces(appDir)
 
   const watchFolders = [
     path.resolve(appDir, '../../..', 'node_modules'),
-    ...workspaces.filter(workspaceDir => !(workspaceDir === appDir)),
-  ];
+    ...workspaces.filter((workspaceDir) => !(workspaceDir === appDir)),
+  ]
 
   return {
     watchFolders,
@@ -18,9 +18,10 @@ function getConfig(appDir, options = {}) {
     resolver: {
       extraNodeModules: {
         'react-native': path.resolve(appDir, 'node_modules', 'react-native'),
+        react: path.resolve(appDir, 'node_modules', 'react'),
       },
     },
-  };
+  }
 }
 
-module.exports = getConfig(__dirname);
+module.exports = getConfig(__dirname)
