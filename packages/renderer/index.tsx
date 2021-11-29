@@ -51,10 +51,10 @@ export const parseTree = (tree?: ITree | ITree[] | null): React.ReactNode => {
   return null
 }
 
-const Handlers = {
+const Handlers: { [key: string]: (cmp: ITree) => React.ReactNode } = {
   Array: (cmp: ITree) => parseTree(cmp.children),
   Component: (cmp: ITree) => parseTree(cmp.children),
-  String: (cmp: ITree) => cmp.options.value,
+  String: (cmp: ITree): string => (cmp.options?.value as string) || '',
 }
 
 export const addRenderer = (typeName: string, render: (cmp: ITree) => React.ReactNode) => {
