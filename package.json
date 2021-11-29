@@ -28,7 +28,8 @@
     "lint:check": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "prettier:check": "prettier --check .",
-    "prettier:fix": "prettier --write ."
+    "prettier:fix": "prettier --write .",
+    "ts:check": "tsc"
   },
   "dependencies": {
     "@react-native-community/eslint-config": "^2.0.0",
@@ -47,5 +48,10 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && node scripts/precommit.js"
+    }
   }
 }
