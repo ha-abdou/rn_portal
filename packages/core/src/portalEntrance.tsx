@@ -5,7 +5,7 @@ import { w3cwebsocket as W3CWebSocket } from 'websocket'
 import Parser, { IParsedFiber, TFiberNode } from '@portal/parser'
 import sleep from './lib/sleep'
 
-interface ICreatPortalOptions {
+interface ICreatPortalEntranceOptions {
   wsParams?: ConstructorParameters<typeof W3CWebSocket>
 }
 
@@ -31,7 +31,7 @@ export interface IPortalRefType {
 // without this func, measure will not work, dont know why
 const dummyFunc = () => void 0
 
-const creatPortal = ({ wsParams }: ICreatPortalOptions) => {
+const creatPortalEntrance = ({ wsParams }: ICreatPortalEntranceOptions) => {
   const client = wsParams ? new W3CWebSocket(...wsParams) : null
 
   return forwardRef<IPortalRefType, IPortalProps>(function Portal({ children, style }, portalRef) {
@@ -102,4 +102,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default creatPortal
+export default creatPortalEntrance

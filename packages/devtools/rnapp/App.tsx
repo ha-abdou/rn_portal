@@ -1,14 +1,14 @@
 import React, { useRef } from 'react'
 import { SafeAreaView, View, Button } from 'react-native'
 
-import { creatPortal, IPortalRefType } from '@portal/core'
+import { creatPortalEntrance, IPortalRefType } from '@portal/core'
 import { loadReactNativeParsers } from '@portal/components'
 
-const url = 'ws://192.168.236.122:9100/phone'
+const url = 'ws://172.21.161.39:9100/phone'
 const protocols = 'echo-protocol'
 
 loadReactNativeParsers()
-const Portal = creatPortal({
+const Portal = creatPortalEntrance({
   wsParams: [url, protocols],
 })
 const App = () => {
