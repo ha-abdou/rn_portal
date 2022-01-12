@@ -4,28 +4,11 @@ import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native'
 import { ITree } from './types'
 
 interface IRendererProps {
-  viewport?: {
-    width?: number
-    height?: number
-  }
-  style: StyleProp<ViewStyle>
+  style?: StyleProp<ViewStyle>
   tree: ITree
 }
-const Renderer = ({ tree, viewport, style }: IRendererProps) => {
-  return (
-    <View
-      style={[
-        {
-          width: viewport?.width,
-          height: viewport?.height,
-        },
-        styles.containerView,
-        style,
-      ]}
-    >
-      {parseTree(tree)}
-    </View>
-  )
+const Renderer = ({ tree, style }: IRendererProps) => {
+  return <View style={[styles.containerView, style]}>{parseTree(tree)}</View>
 }
 
 const styles = StyleSheet.create({
