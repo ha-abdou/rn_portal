@@ -6,7 +6,7 @@ const createBaseRenderer =
   (Component: React.ComponentType) =>
   (cmp: ITree): React.ReactNode => {
     return (
-      <Component key={cmp.key} {...cmp.props}>
+      <Component key={cmp.key || undefined} {...cmp.props}>
         {parseTree(cmp.children)}
       </Component>
     )
