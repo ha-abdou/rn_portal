@@ -41,7 +41,7 @@ const createPortalExit = ({ wsParams }: ICreatPortalExitOptions) => {
 
           if (isWSNewCaptureAction(parsedData.type)) {
             // console.log('new tree', parsedData.payload)
-            setTree(parsedData.payload.tree)
+            setTree(parsedData.payload)
           }
         }
       }
