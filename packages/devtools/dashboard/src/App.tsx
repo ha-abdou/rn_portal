@@ -1,5 +1,7 @@
 import { loadReactNativeRenderers } from '@portal/components'
 import { createPortalExit } from '@portal/core'
+import { IPortalExistRefType } from '@portal/core/src/portalExit'
+import { useRef } from 'react'
 
 const url = 'ws://172.21.161.39:9100/dashboard'
 const protocols = 'echo-protocol'
@@ -11,9 +13,16 @@ const PortalExit = createPortalExit({
 })
 
 function App() {
+  const portalRef = useRef<IPortalExistRefType>(null)
+  const capture = () => {
+    if (!portalRef.current) return
+    portalRef.current
+      .capture()
+  }
+
   return (
     <div >
-      App
+      <button onClick={capture}>capture</button>
       <PortalExit />
     </div>
   );

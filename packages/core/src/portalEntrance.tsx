@@ -4,6 +4,8 @@ import { w3cwebsocket as W3CWebSocket } from 'websocket'
 
 import Parser, { IParsedFiber, TFiberNode } from '@portal/parser'
 import sleep from './lib/sleep'
+import { TViewPort } from './types'
+import { wsNewCaptureAction } from './WSActions'
 
 interface ICreatPortalEntranceOptions {
   wsParams?: ConstructorParameters<typeof W3CWebSocket>
@@ -14,8 +16,8 @@ interface IPortalProps {
   style?: StyleProp<ViewStyle>
 }
 
-type ICaptureResult = {
-  viewport: { xo: number; yo: number; width: number; height: number; x: number; y: number }
+export type ICaptureResult = {
+  viewport: TViewPort
   dt: number
   tree: IParsedFiber[] | null
 }
@@ -50,7 +52,9 @@ const creatPortalEntrance = ({ wsParams }: ICreatPortalEntranceOptions) => {
             throw new Error('ref not ready, call later')
           }
 
-          return await snap(ref.current)
+          const res = await snap(ref.current)
+          client?.send(wsNewCaptureAction(res))
+          return res
         },
         onerror: (callback) => void (client && (client.onerror = callback)),
         onclose: (callback) => void (client && (client.onclose = callback)),
