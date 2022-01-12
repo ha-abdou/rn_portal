@@ -1,12 +1,9 @@
-import { loadReactNativeRenderers } from '@portal/components'
 import { createPortalExit } from '@portal/core'
 import { IPortalExistRefType } from '@portal/core/src/portalExit'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 const url = 'ws://172.21.161.39:9100/dashboard'
 const protocols = 'echo-protocol'
-
-loadReactNativeRenderers()
 
 const PortalExit = createPortalExit({
   wsParams: [url, protocols],

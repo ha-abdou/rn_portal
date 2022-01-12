@@ -7,7 +7,6 @@ import { loadReactNativeParsers } from '@portal/components'
 const url = 'ws://172.21.161.39:9100/phone'
 const protocols = 'echo-protocol'
 
-loadReactNativeParsers()
 const Portal = creatPortalEntrance({
   wsParams: [url, protocols],
 })

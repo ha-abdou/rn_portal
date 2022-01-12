@@ -6,6 +6,7 @@ import Parser, { IParsedFiber, TFiberNode } from '@portal/parser'
 import sleep from './lib/sleep'
 import { TViewPort } from './types'
 import { isWSRequestCaptureAction, wsNewCaptureAction } from './WSActions'
+import { loadReactNativeParsers } from '@portal/components'
 
 interface ICreatPortalEntranceOptions {
   wsParams?: ConstructorParameters<typeof W3CWebSocket>
@@ -32,8 +33,14 @@ export interface IPortalRefType {
 
 // without this func, measure will not work, dont know why
 const dummyFunc = () => void 0
+let loaded = false
 
 const creatPortalEntrance = ({ wsParams }: ICreatPortalEntranceOptions) => {
+  if (!loaded) {
+    loadReactNativeParsers()
+    loaded = true
+  }
+
   const client = wsParams ? new W3CWebSocket(...wsParams) : null
 
   return forwardRef<IPortalRefType, IPortalProps>(function Portal({ children, style }, portalRef) {

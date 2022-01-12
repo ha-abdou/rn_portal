@@ -4,6 +4,7 @@ import { w3cwebsocket as W3CWebSocket } from 'websocket'
 import { StyleProp, ViewStyle } from 'react-native'
 import { TViewPort } from './types'
 import { isWSNewCaptureAction, wsRequestCaptureAction } from './WSActions'
+import { loadReactNativeRenderers } from '@portal/components'
 
 interface ICreatPortalExitOptions {
   wsParams?: ConstructorParameters<typeof W3CWebSocket>
@@ -28,7 +29,14 @@ interface IProtalexistProps {
   style?: StyleProp<ViewStyle>
 }
 
+let loaded = false
+
 const createPortalExit = ({ wsParams }: ICreatPortalExitOptions) => {
+  if (!loaded) {
+    loadReactNativeRenderers()
+    loaded = true
+  }
+
   const client = wsParams ? new W3CWebSocket(...wsParams) : null
   let onCapture: ((res: ICaptureResult) => void) | null = null
 
