@@ -56,8 +56,6 @@ const creatPortalEntrance = ({ wsParams }: ICreatPortalEntranceOptions) => {
     useEffect(() => {
       if (client) {
         client.onmessage = ({ data }) => {
-          console.log('test =====>', data)
-
           if (typeof data !== 'string') return
           const parsedData = JSON.parse(data)
 
