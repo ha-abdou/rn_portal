@@ -1,11 +1,11 @@
 import { View, StyleSheet, MeasureOnSuccessCallback, StyleProp, ViewStyle } from 'react-native'
-import React, { useRef, useState, useImperativeHandle, forwardRef } from 'react'
+import React, { useRef, useState, useImperativeHandle, forwardRef, useEffect, useCallback } from 'react'
 import { w3cwebsocket as W3CWebSocket } from 'websocket'
 
 import Parser, { IParsedFiber, TFiberNode } from '@portal/parser'
 import sleep from './lib/sleep'
 import { TViewPort } from './types'
-import { wsNewCaptureAction } from './WSActions'
+import { isWSRequestCaptureAction, wsNewCaptureAction } from './WSActions'
 
 interface ICreatPortalEntranceOptions {
   wsParams?: ConstructorParameters<typeof W3CWebSocket>
@@ -39,29 +39,48 @@ const creatPortalEntrance = ({ wsParams }: ICreatPortalEntranceOptions) => {
   return forwardRef<IPortalRefType, IPortalProps>(function Portal({ children, style }, portalRef) {
     const ref = useRef(null)
     const [, forceUpdate] = useState(0)
+    const capture = useCallback(async () => {
+      // force update to get last fiber value of child
+      forceUpdate((u) => u + 1)
+      await sleep(1)
+
+      if (!ref.current) {
+        throw new Error('ref not ready, call later')
+      }
+
+      const res = await snap(ref.current)
+      client?.send(wsNewCaptureAction(res))
+      return res
+    }, [])
+
+    useEffect(() => {
+      if (client) {
+        client.onmessage = ({ data }) => {
+          console.log('test =====>', data)
+
+          if (typeof data !== 'string') return
+          const parsedData = JSON.parse(data)
+
+          if (isWSRequestCaptureAction(parsedData.type)) {
+            capture()
+          }
+        }
+      }
+      return () => {
+        client?.close()
+      }
+    }, [])
 
     useImperativeHandle(
       portalRef,
       () => ({
-        capture: async () => {
-          // force update to get last fiber value of child
-          forceUpdate((u) => u + 1)
-          await sleep(1)
-
-          if (!ref.current) {
-            throw new Error('ref not ready, call later')
-          }
-
-          const res = await snap(ref.current)
-          client?.send(wsNewCaptureAction(res))
-          return res
-        },
+        capture,
         onerror: (callback) => void (client && (client.onerror = callback)),
         onclose: (callback) => void (client && (client.onclose = callback)),
         onopen: (callback) => void (client && (client.onopen = callback)),
         send: () => void 0,
       }),
-      [],
+      [capture],
     )
 
     return (

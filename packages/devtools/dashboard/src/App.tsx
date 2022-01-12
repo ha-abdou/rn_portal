@@ -15,15 +15,13 @@ const PortalExit = createPortalExit({
 function App() {
   const portalRef = useRef<IPortalExistRefType>(null)
   const capture = () => {
-    if (!portalRef.current) return
-    portalRef.current
-      .capture()
+    portalRef.current?.capture()
   }
 
   return (
     <div >
       <button onClick={capture}>capture</button>
-      <PortalExit />
+      <PortalExit ref={portalRef} />
     </div>
   );
 }
