@@ -1,28 +1,24 @@
-import React, { useRef } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { SafeAreaView, View, Button } from 'react-native'
 
-import { creatPortalEntrance, IPortalRefType } from '@portal/core'
-import { loadReactNativeParsers } from '@portal/components'
+import { creatPortalEntrance } from '@portal/core'
 
-const url = 'ws://172.21.161.39:9100/phone'
+const url = 'ws://192.168.67.68:9100/phone'
 const protocols = 'echo-protocol'
 
-const Portal = creatPortalEntrance({
+const [Portal, controller] = creatPortalEntrance({
   wsParams: [url, protocols],
 })
 const App = () => {
-  const portalRef = useRef<IPortalRefType>(null)
-  const capture = () => {
-    if (!portalRef.current) return
-    portalRef.current
-      .capture()
-      .then((res) => {
-        console.log('res', res)
-      })
-      .catch((e) => {
-        console.log('error', e)
-      })
-  }
+  const capture = useCallback(() => {
+    controller.capture()
+  }, [])
+  
+  useEffect(() => {
+    controller.onCapture((res) => {
+      console.log('capture', res)
+    })
+  }, [])
 
   return (
     <SafeAreaView
@@ -32,7 +28,9 @@ const App = () => {
       }}
     >
       <Button title="capture" onPress={capture} />
-      <Portal ref={portalRef}>
+      <Portal >
+        <View style={{ width: 100, height: 100, backgroundColor: 'red' }} />
+        <View style={{ width: 100, height: 100, backgroundColor: 'yellow' }} />
         <View style={{ width: 100, height: 100, backgroundColor: 'red' }} />
       </Portal>
     </SafeAreaView>

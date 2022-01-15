@@ -1,5 +1,5 @@
 import { View, StyleSheet, MeasureOnSuccessCallback, StyleProp, ViewStyle } from 'react-native'
-import React, { useRef, useState, useImperativeHandle, forwardRef, useEffect, useCallback } from 'react'
+import React, { useRef, useState, memo, useEffect, useCallback } from 'react'
 import { w3cwebsocket as W3CWebSocket } from 'websocket'
 
 import Parser, { IParsedFiber, TFiberNode } from '@portal/parser'
@@ -23,12 +23,12 @@ export type ICaptureResult = {
   tree: IParsedFiber[] | null
 }
 
-export interface IPortalRefType {
-  capture: () => Promise<ICaptureResult>
+export interface IPortalController {
+  capture: () => void
   onerror: (callback: W3CWebSocket['onerror']) => void
   onclose: (callback: W3CWebSocket['onclose']) => void
   onopen: (callback: W3CWebSocket['onopen']) => void
-  send: () => void
+  onCapture: (callback: (res: ICaptureResult) => void) => void
 }
 
 // without this func, measure will not work, dont know why
@@ -42,25 +42,34 @@ const creatPortalEntrance = ({ wsParams }: ICreatPortalEntranceOptions) => {
   }
 
   const client = wsParams ? new W3CWebSocket(...wsParams) : null
+  let onCapture: ((res: ICaptureResult) => void) | null = null
+  const controller: IPortalController = {
+    capture: () => null,
+    onerror: (callback) => void (client && (client.onerror = callback)),
+    onclose: (callback) => void (client && (client.onclose = callback)),
+    onopen: (callback) => void (client && (client.onopen = callback)),
+    onCapture: (callback) => void (onCapture = callback),
+  }
 
-  return forwardRef<IPortalRefType, IPortalProps>(function Portal({ children, style }, portalRef) {
+  const Portal = memo(function Portal({ children, style }: IPortalProps) {
     const ref = useRef(null)
     const [, forceUpdate] = useState(0)
     const capture = useCallback(async () => {
       // force update to get last fiber value of child
       forceUpdate((u) => u + 1)
-      await sleep(1)
+      await sleep(0)
 
       if (!ref.current) {
         throw new Error('ref not ready, call later')
       }
 
       const res = await snap(ref.current)
+      onCapture?.(res)
       client?.send(wsNewCaptureAction(res))
-      return res
     }, [])
 
     useEffect(() => {
+      controller.capture = capture
       if (client) {
         client.onmessage = ({ data }) => {
           if (typeof data !== 'string') return
@@ -76,24 +85,13 @@ const creatPortalEntrance = ({ wsParams }: ICreatPortalEntranceOptions) => {
       }
     }, [])
 
-    useImperativeHandle(
-      portalRef,
-      () => ({
-        capture,
-        onerror: (callback) => void (client && (client.onerror = callback)),
-        onclose: (callback) => void (client && (client.onclose = callback)),
-        onopen: (callback) => void (client && (client.onopen = callback)),
-        send: () => void 0,
-      }),
-      [capture],
-    )
-
     return (
       <View style={[styles.containerView, style]} ref={ref} onLayout={dummyFunc}>
         {children}
       </View>
     )
   })
+  return [Portal, controller] as const
 }
 
 const snap = async (ref: View) => {
