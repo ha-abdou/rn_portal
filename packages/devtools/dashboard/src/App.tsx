@@ -1,32 +1,27 @@
 import { createPortalExit } from '@portal/core'
-import { IPortalExistRefType } from '@portal/core/src/portalExit'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const url = 'ws://172.21.161.39:9100/dashboard'
+const url = 'ws://192.168.67.68:9100/dashboard'
 const protocols = 'echo-protocol'
 
-const PortalExit = createPortalExit({
+const [PortalExit, controller] = createPortalExit({
   wsParams: [url, protocols],
 })
 
 function App() {
-  const portalRef = useRef<IPortalExistRefType>(null)
   const [dt, setDT] = useState<number | undefined>()
-  const capture = useCallback(() => {
-    portalRef.current?.capture()
-  }, [])
   
   useEffect(() => {
-    portalRef.current?.onCapture(({ dt }) => {
+    controller.onCapture(({ dt }) => {
       setDT(dt)
     })
   }, [])
 
   return (
     <div style={styles.container} >
-      <button onClick={capture}>capture</button>
+      <button onClick={controller.capture}>capture</button>
       <p>parse time: {dt} ms</p>
-      <PortalExit ref={portalRef} style={styles.portal} />
+      <PortalExit style={styles.portal} />
     </div>
   );
 }
