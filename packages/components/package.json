@@ -4,7 +4,7 @@
   "main": "index.ts",
   "license": "MIT",
   "dependencies": {
-    "@types/react-native": "^0.66.5",
+    "@types/react-native": "^0.66.12",
     "@portal/renderer": "*",
     "@portal/parser": "*"
   },
