@@ -1,4 +1,4 @@
-import { createPortalExit } from '@portal/core'
+import { createPortalExit } from '@rn_portal/core'
 import { useEffect, useState } from 'react'
 
 const url = 'ws://192.168.67.68:9100/dashboard'

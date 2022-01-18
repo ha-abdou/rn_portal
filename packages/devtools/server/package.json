@@ -1,5 +1,5 @@
 {
-  "name": "@portal/dev_server",
+  "name": "@rn_portal/dev_server",
   "version": "1.0.0",
   "main": "src/index.ts",
   "scripts": {

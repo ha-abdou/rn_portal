@@ -19,9 +19,9 @@
   },
   "scripts": {
     "start": "concurrently --kill-others-on-fail \"yarn start:server\" \"yarn start:dashboard\" \"yarn start:rnapp\"",
-    "start:server": "yarn workspace @portal/dev_server start:dev",
-    "start:dashboard": "yarn workspace @portal/dev_dashboard start",
-    "start:rnapp": "yarn workspace @portal/dev_rnapp start",
+    "start:server": "yarn workspace @rn_portal/dev_server start:dev",
+    "start:dashboard": "yarn workspace @rn_portal/dev_dashboard start",
+    "start:rnapp": "yarn workspace @rn_portal/dev_rnapp start",
     "reinstall": "yarn clean:nm && yarn install",
     "clean:nm": "find . -name \"node_modules\" -type d -prune -exec rm -rf '{}' +",
     "lint:check": "eslint . --ext .js,.jsx,.ts,.tsx",

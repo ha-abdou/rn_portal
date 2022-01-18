@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { parseTree, ITree } from '@portal/renderer'
+import { parseTree, ITree } from '@rn_portal/renderer'
 
 const createBaseRenderer =
   (Component: React.ComponentType) =>

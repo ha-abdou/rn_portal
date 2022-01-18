@@ -1,5 +1,5 @@
 {
-  "name": "@portal/renderer",
+  "name": "@rn_portal/renderer",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
@@ -8,7 +8,7 @@
     "build:declaration": "tsc --emitDeclarationOnly --outDir dist --noEmit false --declaration true"
   },
   "dependencies": {
-    "@portal/parser": "1.0.0"
+    "@rn_portal/parser": "1.0.0"
   },
   "peerDependencies": {
     "react": "*",

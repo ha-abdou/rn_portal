@@ -1,6 +1,6 @@
 import { View } from 'react-native'
 
-import { createBaseParser, createBaseRenderer } from '@portal/core'
+import { createBaseParser, createBaseRenderer } from '@rn_portal/core'
 
 export const typeName = 'RNView'
 

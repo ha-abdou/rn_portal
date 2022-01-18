@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react'
 import { SafeAreaView, View, Button } from 'react-native'
 
-import { creatPortalEntrance } from '@portal/core'
+import { creatPortalEntrance } from '@rn_portal/core'
 
 const url = 'ws://192.168.67.68:9100/phone'
 const protocols = 'echo-protocol'

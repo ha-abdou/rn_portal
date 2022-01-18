@@ -12,7 +12,7 @@ export default {
   output: {
     file: 'dist/index.js',
   },
-  external: ['@portal/parser'],
+  external: ['@rn_portal/parser'],
   acornInjectPlugins: [jsx()],
   plugins: [
     external(),

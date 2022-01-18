@@ -1,4 +1,4 @@
-import { TFiberNode, TFiberParser } from '@portal/parser'
+import { TFiberNode, TFiberParser } from '@rn_portal/parser'
 
 const createBaseParser: (
   typeName: string,

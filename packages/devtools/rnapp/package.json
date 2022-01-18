@@ -1,5 +1,5 @@
 {
-  "name": "@portal/dev_rnapp",
+  "name": "@rn_portal/dev_rnapp",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -24,9 +24,9 @@
     ]
   },
   "dependencies": {
-    "@portal/components": "*",
-    "@portal/parser": "*",
-    "@portal/core": "*",
+    "@rn_portal/components": "*",
+    "@rn_portal/parser": "*",
+    "@rn_portal/core": "*",
     "get-yarn-workspaces": "^1.0.2",
     "metro-config": "^0.66.2",
     "react": "^17.0.2",

@@ -2,11 +2,11 @@ import { View, StyleSheet, MeasureOnSuccessCallback, StyleProp, ViewStyle } from
 import React, { useRef, useState, memo, useEffect, useCallback } from 'react'
 import { w3cwebsocket as W3CWebSocket } from 'websocket'
 
-import Parser, { IParsedFiber, TFiberNode } from '@portal/parser'
+import Parser, { IParsedFiber, TFiberNode } from '@rn_portal/parser'
 import sleep from './lib/sleep'
 import { TViewPort } from './types'
 import { isWSRequestCaptureAction, wsNewCaptureAction } from './WSActions'
-import { loadReactNativeParsers } from '@portal/components'
+import { loadReactNativeParsers } from '@rn_portal/components'
 
 interface ICreatPortalEntranceOptions {
   wsParams?: ConstructorParameters<typeof W3CWebSocket>
