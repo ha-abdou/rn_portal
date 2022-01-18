@@ -3,7 +3,7 @@ import { SafeAreaView, View, Button } from 'react-native'
 
 import { creatPortalEntrance } from '@rn_portal/core'
 
-const url = 'ws://192.168.67.68:9100/phone'
+const url = 'ws://172.19.246.130:9100/phone'
 const protocols = 'echo-protocol'
 
 const [Portal, controller] = creatPortalEntrance({

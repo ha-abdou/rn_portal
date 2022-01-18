@@ -5,10 +5,11 @@
   "scripts": {
     "build": "rimraf dist && yarn build:rollup && yarn build:declaration",
     "build:rollup": "rollup -c rollup.config.js",
-    "build:declaration": "tsc --emitDeclarationOnly --outDir dist --noEmit false --declaration true"
+    "build:declaration": "tsc --emitDeclarationOnly --outDir dist --noEmit false --declaration true",
+    "prepublish": "yarn build"
   },
   "dependencies": {
-    "@rn_portal/parser": "1.0.0"
+    "@rn_portal/parser": "*"
   },
   "peerDependencies": {
     "react": "*",
