@@ -8,7 +8,7 @@ import fs from 'fs'
 const packageJson = JSON.parse(fs.readFileSync(path.resolve('package.json')).toString())
 
 const input = path.resolve(packageJson.main)
-const outputFile = path.resolve(packageJson.module)
+const outputFile = path.resolve('dist/index.js')
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
