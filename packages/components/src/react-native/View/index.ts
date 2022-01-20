@@ -6,7 +6,7 @@ export const typeName = 'RNView'
 
 const ViewParser = {
   type: View,
-  parser: createBaseParser(typeName, (fiber) => fiber?.child?.child?.child),
+  parser: createBaseParser(typeName, (fiber) => fiber?.child?.child?.child) as any,
   renderer: createBaseRenderer(View) as any,
   typeName,
 }
