@@ -4,7 +4,6 @@ import { w3cwebsocket as W3CWebSocket } from 'websocket'
 import { StyleProp, ViewStyle } from 'react-native'
 import { TViewPort } from './types'
 import { isWSNewCaptureAction, wsRequestCaptureAction } from './WSActions'
-import { loadReactNativeRenderers } from '@rn_portal/components'
 
 interface ICreatPortalExitOptions {
   wsParams?: ConstructorParameters<typeof W3CWebSocket>
@@ -33,6 +32,8 @@ let loaded = false
 
 const createPortalExit = ({ wsParams }: ICreatPortalExitOptions) => {
   if (!loaded) {
+    const loadReactNativeRenderers = require('@rn_portal/components').loadReactNativeRenderers
+
     loadReactNativeRenderers()
     loaded = true
   }

@@ -6,7 +6,6 @@ import Parser, { IParsedFiber, TFiberNode } from '@rn_portal/parser'
 import sleep from './lib/sleep'
 import { TViewPort } from './types'
 import { isWSRequestCaptureAction, wsNewCaptureAction } from './WSActions'
-import { loadReactNativeParsers } from '@rn_portal/components'
 
 interface ICreatPortalEntranceOptions {
   wsParams?: ConstructorParameters<typeof W3CWebSocket>
@@ -37,6 +36,7 @@ let loaded = false
 
 const creatPortalEntrance = ({ wsParams }: ICreatPortalEntranceOptions) => {
   if (!loaded) {
+    const loadReactNativeParsers = require('@rn_portal/components').loadReactNativeParsers
     loadReactNativeParsers()
     loaded = true
   }

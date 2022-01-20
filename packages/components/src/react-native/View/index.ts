@@ -4,10 +4,10 @@ import { createBaseParser, createBaseRenderer } from '@rn_portal/core'
 
 export const typeName = 'RNView'
 
-export const ViewParser = {
+const ViewParser = {
   type: View,
   parser: createBaseParser(typeName, (fiber) => fiber?.child?.child?.child),
-  renderer: createBaseRenderer(View),
+  renderer: createBaseRenderer(View) as any,
   typeName,
 }
 

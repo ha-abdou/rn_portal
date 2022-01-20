@@ -1,12 +1,17 @@
 {
   "name": "@rn_portal/components",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "src/index.ts",
+  "files": [
+    "src",
+    "dist"
+  ],
   "license": "MIT",
   "dependencies": {
     "@types/react-native": "^0.66.12",
     "@rn_portal/renderer": "*",
-    "@rn_portal/parser": "*"
+    "@rn_portal/parser": "*",
+    "@rn_portal/core": "*"
   },
   "peerDependencies": {
     "react-native": "*"
