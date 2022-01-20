@@ -1,8 +1,16 @@
 {
   "name": "@rn_portal/parser",
   "version": "1.0.0",
-  "main": "index.ts",
   "license": "MIT",
+  "react-native": "src/index.ts",
+  "source": "src/index.ts",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
+  "files": [
+    "src",
+    "dist"
+  ],
   "dependencies": {
     "@types/react": "^17.0.35",
     "@types/react-native": "^0.66.12"
