@@ -1,6 +1,6 @@
 {
   "name": "@rn_portal/core",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.ts",
   "files": [
     "src",
@@ -10,9 +10,9 @@
     "@types/react": "^17.0.35",
     "@types/react-native": "^0.66.12",
     "websocket": "^1.0.34",
-    "@rn_portal/parser": "*",
-    "@rn_portal/renderer": "*",
-    "@rn_portal/components": "*"
+    "@rn_portal/parser": "0.0.1",
+    "@rn_portal/renderer": "0.0.1",
+    "@rn_portal/components": "0.0.1"
   },
   "peerDependencies": {
     "react": "*",

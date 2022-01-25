@@ -24,9 +24,9 @@
     ]
   },
   "dependencies": {
-    "@rn_portal/components": "*",
-    "@rn_portal/parser": "*",
-    "@rn_portal/core": "*",
+    "@rn_portal/components": "0.0.1",
+    "@rn_portal/parser": "0.0.1",
+    "@rn_portal/core": "0.0.1",
     "get-yarn-workspaces": "^1.0.2",
     "metro-config": "^0.66.2",
     "react": "^17.0.2",
