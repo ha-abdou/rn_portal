@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "portal",
+  "name": "rn_portal",
   "version": "0.0.4",
   "workspaces": {
     "packages": [
