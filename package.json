@@ -31,8 +31,9 @@
     "prettier:fix": "prettier --write .",
     "ts:check": "node scripts/build.mjs",
     "build": "node scripts/build.mjs",
-    "bump": "node --experimental-modules scripts/yarn-bump/bin/bump.js",
-    "deploy": "node --experimental-modules scripts/deploy.mjs"
+    "bump": "node scripts/bump.mjs",
+    "yarn-bump": "node --experimental-modules scripts/lib/yarn-bump/bin/bump.js",
+    "deploy": "node scripts/deploy.mjs"
   },
   "dependencies": {
     "@babel/core": "^7.16.10",
