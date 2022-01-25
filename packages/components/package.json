@@ -1,6 +1,6 @@
 {
   "name": "@rn_portal/components",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "src/index.ts",
   "files": [
     "src",
@@ -9,9 +9,9 @@
   "license": "MIT",
   "dependencies": {
     "@types/react-native": "^0.66.12",
-    "@rn_portal/renderer": "0.0.3",
-    "@rn_portal/parser": "0.0.3",
-    "@rn_portal/core": "0.0.3"
+    "@rn_portal/renderer": "0.0.4",
+    "@rn_portal/parser": "0.0.4",
+    "@rn_portal/core": "0.0.4"
   },
   "peerDependencies": {
     "react-native": "*"

@@ -1,10 +1,10 @@
 {
   "name": "@rn_portal/renderer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "main": "src/index.tsx",
   "dependencies": {
-    "@rn_portal/parser": "0.0.3"
+    "@rn_portal/parser": "0.0.4"
   },
   "peerDependencies": {
     "react": "*",
