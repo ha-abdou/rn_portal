@@ -79,7 +79,7 @@ const check = async () => {
   }
 }
 
-const commitChanges = (version) =>
+const commitChanges = (version, tagMessage) =>
   new Promise((res, rej) => {
     getChangedFiles()
       .then((changedFiles) => changedFiles.filter((f) => f.endsWith('package.json')))
@@ -87,7 +87,7 @@ const commitChanges = (version) =>
         if (changedFiles.length > 0) {
           const tagName = `v${version}`
           const commit = `git commit ${changedFiles.join(' ')} -m "${tagName}"`
-          const tag = `git tag ${tagName}`
+          const tag = `git tag ${tagName} ${tagMessage ? '-m "' + tagMessage + '"' : ''}`
           const pushTag = `git push origin ${tagName}`
           const pushLastCommit = 'git push origin $(git branch --show-current)~0:$(git branch --show-current)'
 
@@ -127,7 +127,7 @@ const main = async () => {
 
   fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2))
 
-  await commitChanges(newVersion)
+  await commitChanges(newVersion, argv.argv.message)
 }
 
 const argv = yargs(process.argv.slice(2))
@@ -139,6 +139,10 @@ const argv = yargs(process.argv.slice(2))
   })
   .option('minor', {
     type: 'boolean',
+  })
+  .option('message', {
+    alias: 'm',
+    type: 'string',
   })
   .conflicts({
     minor: ['major', 'patch'],
