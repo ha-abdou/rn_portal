@@ -33,6 +33,7 @@
     "build": "node scripts/build.mjs",
     "bump": "node scripts/bump.mjs",
     "yarn-bump": "node --experimental-modules scripts/lib/yarn-bump/bin/bump.js",
+    "predeploy": "yarn build",
     "deploy": "node scripts/deploy.mjs"
   },
   "dependencies": {
