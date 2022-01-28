@@ -1,9 +1,10 @@
-import Renderer, { ITree } from '@rn_portal/renderer'
 import { useState, useEffect, memo } from 'react'
 import { w3cwebsocket as W3CWebSocket } from 'websocket'
 import { StyleProp, ViewStyle } from 'react-native'
-import { TViewPort } from './types'
-import { isWSNewCaptureAction, wsRequestCaptureAction } from './WSActions'
+
+import Renderer, { ITree } from '@rn_portal/renderer'
+import { TViewPort } from '@rn_portal/core/src/types'
+import { isWSNewCaptureAction, wsRequestCaptureAction } from '@rn_portal/core/src/WSActions'
 
 interface ICreatPortalExitOptions {
   wsParams?: ConstructorParameters<typeof W3CWebSocket>

@@ -5,6 +5,7 @@
   "workspaces": {
     "packages": [
       "packages/entrance",
+      "packages/exit",
       "packages/parser",
       "packages/renderer",
       "packages/components",
