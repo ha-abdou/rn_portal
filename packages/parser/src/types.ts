@@ -1,4 +1,7 @@
 import React from 'react'
+
+import { IFiberDebug, IParsedFiber } from '@rn_portal/core'
+
 import Walker from './walker'
 
 interface IDefaultPorps {
@@ -46,29 +49,10 @@ export interface TFiberNode<
   _debugHookTypes: unknown
 }
 
-export interface IFiberDebug {
-  columnNumber: number
-  fileName: string
-  lineNumber: number
-}
-
 export interface IParser {
   type: unknown
   typeName: string
   parser: TFiberParser
-}
-
-export interface IParsedFiber<Options = { [key: string]: unknown }> {
-  type: {
-    name: string
-    displayName?: string
-  }
-  fiberDebug: IFiberDebug
-  key: null | string
-  props?: { [key: string]: unknown }
-  children?: IParsedFiber[] | null
-  options?: Options
-  walkerOptionsForNextSibling?: TWalkerOptions
 }
 
 export type TFiberParser<
@@ -77,7 +61,3 @@ export type TFiberParser<
   // todo correct type
   Type = React.ComponentSpec<Props, State>,
 > = (fiber: TFiberNode<Props, State, Type>, walker: Walker) => Promise<IParsedFiber>
-
-export interface TWalkerOptions {
-  escapeSibling?: boolean
-}

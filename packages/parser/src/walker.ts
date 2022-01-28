@@ -1,5 +1,7 @@
+import { TWalkerOptions, IParsedFiber } from '@rn_portal/core'
+
 import { getFiberParser } from './parseHandler'
-import { IParsedFiber, TFiberNode, TWalkerOptions } from './types'
+import { TFiberNode } from './types'
 
 type TWalkerReturn = Promise<IParsedFiber[] | null>
 

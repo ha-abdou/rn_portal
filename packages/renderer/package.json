@@ -4,7 +4,7 @@
   "license": "MIT",
   "main": "src/index.tsx",
   "dependencies": {
-    "@rn_portal/parser": "0.0.4"
+    "@rn_portal/core": "0.0.4"
   },
   "peerDependencies": {
     "react": "*",

@@ -6,6 +6,7 @@
   "dependencies": {
     "@rn_portal/renderer": "0.0.4",
     "@rn_portal/core": "0.0.4",
+    "@rn_portal/components": "0.0.4",
     "websocket": "^1.0.34"
   },
   "peerDependencies": {

@@ -10,8 +10,7 @@
   "dependencies": {
     "@types/react-native": "^0.66.12",
     "@rn_portal/renderer": "0.0.4",
-    "@rn_portal/parser": "0.0.4",
-    "@rn_portal/core": "0.0.4"
+    "@rn_portal/parser": "0.0.4"
   },
   "peerDependencies": {
     "react-native": "*"

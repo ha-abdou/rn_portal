@@ -1,24 +1,18 @@
 {
   "name": "@rn_portal/core",
   "version": "0.0.4",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "files": [
     "src",
     "dist"
   ],
   "dependencies": {
     "@types/react": "^17.0.35",
-    "@types/react-native": "^0.66.12",
-    "websocket": "^1.0.34",
-    "@rn_portal/parser": "0.0.4",
-    "@rn_portal/renderer": "0.0.4",
-    "@rn_portal/components": "0.0.4"
+    "@types/react-native": "^0.66.12"
   },
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
   },
-  "devDependencies": {
-    "@types/websocket": "^1.0.4"
-  }
+  "devDependencies": {}
 }
