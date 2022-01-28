@@ -1,12 +1,12 @@
 {
   "name": "@rn_portal/exit",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "main": "src/index.tsx",
   "dependencies": {
-    "@rn_portal/renderer": "0.0.4",
-    "@rn_portal/core": "0.0.4",
-    "@rn_portal/components": "0.0.4",
+    "@rn_portal/renderer": "0.0.5",
+    "@rn_portal/core": "0.0.5",
+    "@rn_portal/components": "0.0.5",
     "websocket": "^1.0.34"
   },
   "peerDependencies": {
