@@ -4,6 +4,7 @@
   "version": "0.0.4",
   "workspaces": {
     "packages": [
+      "packages/entrance",
       "packages/parser",
       "packages/renderer",
       "packages/components",

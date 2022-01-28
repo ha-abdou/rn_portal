@@ -1,7 +1,7 @@
 import { createPortalExit } from '@rn_portal/core'
 import { useEffect, useState } from 'react'
 
-const url = 'ws://172.19.246.130:9100/dashboard'
+const url = 'ws://172.18.23.85:9100/dashboard'
 const protocols = 'echo-protocol'
 
 const [PortalExit, controller] = createPortalExit({

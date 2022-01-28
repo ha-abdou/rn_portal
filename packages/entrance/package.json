@@ -1,0 +1,23 @@
+{
+  "name": "@rn_portal/entrance",
+  "version": "0.0.4",
+  "license": "MIT",
+  "main": "src/index.tsx",
+  "dependencies": {
+    "@rn_portal/parser": "0.0.4",
+    "@rn_portal/core": "0.0.4",
+    "websocket": "^1.0.34"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "devDependencies": {
+    "@types/react-native": "^0.66.12",
+    "@types/react": "^17.0.35"
+  }
+}
