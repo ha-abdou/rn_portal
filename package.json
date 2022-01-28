@@ -21,6 +21,7 @@
     ]
   },
   "scripts": {
+    "postinstall": "cd scripts/lib/yarn-bump && yarn install",
     "start": "concurrently --kill-others-on-fail \"yarn start:server\" \"yarn start:dashboard\" \"yarn start:rnapp\"",
     "start:server": "yarn workspace @rn_portal/dev_server start:dev",
     "start:dashboard": "yarn workspace @rn_portal/dev_dashboard start",
