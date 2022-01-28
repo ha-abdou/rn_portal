@@ -2,9 +2,9 @@ import { View, StyleSheet, MeasureOnSuccessCallback, StyleProp, ViewStyle } from
 import React, { useRef, useState, memo, useEffect, useCallback } from 'react'
 import { w3cwebsocket as W3CWebSocket } from 'websocket'
 
-import Parser, { IParsedFiber, TFiberNode } from '@rn_portal/parser'
+import Parser, { TFiberNode } from '@rn_portal/parser'
 import sleep from '@rn_portal/core/src/lib/sleep'
-import { TViewPort } from '@rn_portal/core/src/types'
+import { ICaptureResult } from '@rn_portal/core/src/types'
 import { isWSRequestCaptureAction, wsNewCaptureAction } from '@rn_portal/core/src/WSActions'
 
 interface ICreatPortalEntranceOptions {
@@ -14,12 +14,6 @@ interface ICreatPortalEntranceOptions {
 interface IPortalProps {
   children?: React.ReactNode
   style?: StyleProp<ViewStyle>
-}
-
-export type ICaptureResult = {
-  viewport: TViewPort
-  dt: number
-  tree: IParsedFiber[] | null
 }
 
 export interface IPortalController {

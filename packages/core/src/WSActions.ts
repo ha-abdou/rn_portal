@@ -1,4 +1,4 @@
-import { ICaptureResult } from './portalEntrance'
+import { ICaptureResult } from './types'
 
 const REQUEST_CAPTURE = '[REQUEST] [CAPTURE]'
 export const wsRequestCaptureAction = () => JSON.stringify({ type: REQUEST_CAPTURE })
