@@ -4,6 +4,7 @@
   "version": "0.0.5",
   "workspaces": {
     "packages": [
+      "packages/bridge",
       "packages/entrance",
       "packages/exit",
       "packages/parser",
@@ -15,6 +16,7 @@
       "packages/devtools/rnapp"
     ],
     "nohoist": [
+      "**/bridge/**",
       "**/react-native",
       "**/react-native/**",
       "**/react"
@@ -22,8 +24,8 @@
   },
   "scripts": {
     "postinstall": "cd scripts/lib/yarn-bump && yarn install",
-    "start": "concurrently --kill-others-on-fail \"yarn start:server\" \"yarn start:dashboard\" \"yarn start:rnapp\"",
-    "start:server": "yarn workspace @rn_portal/dev_server start:dev",
+    "start": "concurrently --kill-others-on-fail \"yarn bridge\" \"yarn start:dashboard\" \"yarn start:rnapp\"",
+    "bridge": "node packages/bridge",
     "start:dashboard": "yarn workspace @rn_portal/dev_dashboard start",
     "start:rnapp": "yarn workspace @rn_portal/dev_rnapp start",
     "reinstall": "yarn clean:nm && yarn install",

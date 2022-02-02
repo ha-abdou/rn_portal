@@ -1,11 +1,12 @@
 #!/usr/bin/env node
-import {server as WebSocketServer, connection} from 'websocket'
-import http from 'http'
-import express from 'express'
-import bodyParser from 'body-parser'
+
+const WebSocketServer = require('websocket').server
+const http = require('http')
+const express = require('express')
+const bodyParser = require('body-parser')
 
 const app = express()
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 const server = http.createServer(app)
 
@@ -21,21 +22,19 @@ const wsServer = new WebSocketServer({
   maxReceivedMessageSize: 100000000,
 })
 
-function originIsAllowed(origin: string) {
+function originIsAllowed(origin) {
   // put logic here to detect whether the specified origin is allowed.
   return true
 }
 
-let dashboard: connection | undefined
-let phone: connection | undefined
+let dashboard
+let phone
 
 wsServer.on('request', function (request) {
   if (!originIsAllowed(request.origin)) {
     // Make sure we only accept requests from an allowed origin
     request.reject()
-    console.log(
-      new Date() + ' Connection from origin ' + request.origin + ' rejected.',
-    )
+    console.log(new Date() + ' Connection from origin ' + request.origin + ' rejected.')
     return
   }
 
@@ -50,7 +49,7 @@ wsServer.on('request', function (request) {
       if (message.type === 'utf8') {
         console.log('Message forwarded from dashboard to phone')
         if (phone) {
-          phone.send(message.utf8Data as string)
+          phone.send(message.utf8Data)
         }
       }
     })
@@ -77,7 +76,7 @@ wsServer.on('request', function (request) {
       if (message.type === 'utf8') {
         console.log('Message forwarded from dashboard to dashboard')
         if (dashboard) {
-          dashboard.send(message.utf8Data as string)
+          dashboard.send(message.utf8Data)
         }
       }
     })
@@ -97,7 +96,5 @@ wsServer.on('request', function (request) {
 
 const port = 9100
 server.listen(port, function () {
-  console.log(
-    `${new Date()} Server is listening at ${require('ip').address()}:${port}`,
-  )
+  console.log(`${new Date()} Server is listening at ${require('ip').address()}:${port}`)
 })
