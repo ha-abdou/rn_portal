@@ -33,7 +33,7 @@ let loaded = false
 
 const createPortalExit = ({ wsParams }: ICreatPortalExitOptions) => {
   if (!loaded) {
-    const loadReactNativeRenderers = require('@rn_portal/components').loadReactNativeRenderers
+    const loadReactNativeRenderers = require('@rn_portal/components/src/react-native/loadReactNativeRenderers').default
 
     loadReactNativeRenderers()
     loaded = true

@@ -30,7 +30,7 @@ let loaded = false
 
 const creatPortalEntrance = ({ wsParams }: ICreatPortalEntranceOptions) => {
   if (!loaded) {
-    const loadReactNativeParsers = require('@rn_portal/components').loadReactNativeParsers
+    const loadReactNativeParsers = require('@rn_portal/components/src/react-native/loadReactNativeParsers').default
     loadReactNativeParsers()
     loaded = true
   }
