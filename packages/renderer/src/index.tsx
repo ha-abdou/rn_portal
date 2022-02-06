@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, ViewStyle, StyleSheet, StyleProp } from 'react-native'
 
-import { ITree } from './types'
+import { ITree, TParsedFiberRenderer } from './types'
 
 interface IRendererProps {
   style?: StyleProp<ViewStyle>
@@ -34,13 +34,13 @@ export const parseTree = (tree?: ITree | ITree[] | null): React.ReactNode => {
   return null
 }
 
-const Handlers: { [key: string]: (cmp: ITree) => React.ReactNode } = {
+const Handlers: { [key: string]: TParsedFiberRenderer } = {
   Array: (cmp: ITree) => parseTree(cmp.children),
   Component: (cmp: ITree) => parseTree(cmp.children),
   String: (cmp: ITree): string => (cmp.options?.value as string) || '',
 }
 
-export const addRenderer = (typeName: string, render: (cmp: ITree) => React.ReactNode) => {
+export const addRenderer = (typeName: string, render: TParsedFiberRenderer) => {
   Handlers[typeName] = render
 }
 
