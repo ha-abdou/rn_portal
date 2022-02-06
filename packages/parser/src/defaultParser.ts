@@ -1,3 +1,4 @@
+import getFiberTypeName from './lib/getFiberDisplayName'
 import { TFiberParser } from './types'
 
 import Walker from './walker'
@@ -12,7 +13,7 @@ export const defaultParser: TFiberParser = async (fiber, walker: Walker) => {
   return {
     type: {
       name: defaultTypeName,
-      displayName: fiber.type?.name || fiber.type?.displayName,
+      displayName: getFiberTypeName(fiber),
     },
     fiberDebug: fiber._debugSource,
     props,

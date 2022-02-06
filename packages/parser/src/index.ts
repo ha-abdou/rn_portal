@@ -1,4 +1,6 @@
-export { default as default } from './walker'
+import Walker from './walker'
+
+export default Walker
 
 export { addFiberParser } from './parseHandler'
 

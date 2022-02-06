@@ -10,22 +10,21 @@ interface IDefaultPorps {
   [key: string]: unknown
 }
 
-export interface TFiberNode<
-  Props = IDefaultPorps,
-  State = { [key: string]: unknown },
-  // todo correct type
-  Type = React.ComponentSpec<Props, State>,
-> {
+interface IDefaultState {
+  [key: string]: unknown
+}
+
+export interface TFiberNode {
   alternate: TFiberNode | null
   child: TFiberNode | null
   return: TFiberNode | null
   sibling: TFiberNode | null
   _debugOwner: TFiberNode | null
-  type: Type | null
-  elementType: Type
-  memoizedProps: Props
-  memoizedState: State
-  pendingProps: Props
+  type: React.ComponentSpec<IDefaultPorps, IDefaultState> | null | string
+  elementType: React.ComponentSpec<IDefaultPorps, IDefaultState> | null | string
+  memoizedProps: IDefaultPorps
+  memoizedState: IDefaultState
+  pendingProps: IDefaultPorps
   key: null | string
   tag: number
   actualDuration: number
@@ -55,9 +54,4 @@ export interface IParser {
   parser: TFiberParser
 }
 
-export type TFiberParser<
-  Props = IDefaultPorps,
-  State = { [key: string]: unknown },
-  // todo correct type
-  Type = React.ComponentSpec<Props, State>,
-> = (fiber: TFiberNode<Props, State, Type>, walker: Walker) => Promise<IParsedFiber>
+export type TFiberParser = (fiber: TFiberNode, walker: Walker) => Promise<IParsedFiber>
