@@ -11,7 +11,6 @@
       "packages/renderer",
       "packages/components",
       "packages/core",
-      "packages/devtools/server",
       "packages/devtools/dashboard",
       "packages/devtools/rnapp"
     ],

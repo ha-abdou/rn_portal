@@ -1,5 +1,6 @@
 import { exec } from 'child_process'
 import path from 'path'
+import fs from 'fs'
 
 import getPackages from './lib/getPackages.mjs'
 
@@ -26,6 +27,10 @@ const main = async () => {
     packagesToBuild.map((p) => {
       pkgList.find((pkg) => {
         if (pkg.name === p) {
+          const packageJson = JSON.parse(fs.readFileSync(path.resolve(pkg.location, 'package.json')).toString())
+
+          if (packageJson['dont-compile'] === true) return
+
           const pkgPath = path.resolve(rootFolder, pkg.location)
           const rollup = `yarn rollup -c ${rollupConfigPath}`
           const ts = 'yarn tsc --emitDeclarationOnly --outDir dist --noEmit false --declaration true'
@@ -39,7 +44,7 @@ const main = async () => {
               if (error) {
                 throw error
               }
-              console.log(stdout)
+              console.log(pkg.name + '\n' + stdout)
             },
           )
           return true
