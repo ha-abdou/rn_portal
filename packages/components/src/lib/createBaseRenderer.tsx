@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { parseTree, ITree } from '@rn_portal/renderer'
+import { parseTree, ITree, TParsedFiberRenderer } from '@rn_portal/renderer'
 
 const createBaseRenderer =
-  (Component: React.ComponentType) =>
+  (Component: React.ComponentType): TParsedFiberRenderer =>
   (cmp: ITree): React.ReactNode => {
     return (
       <Component key={cmp.key || undefined} {...cmp.props}>

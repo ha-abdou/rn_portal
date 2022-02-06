@@ -1,9 +1,11 @@
-import { TFiberNode, TFiberParser } from '@rn_portal/parser'
+import Walker, { TFiberNode, TFiberParser } from '@rn_portal/parser'
 
-const createBaseParser: (
+type TCreateBaseParser = (
   typeName: string,
   getFirstChild: (fiber: TFiberNode) => TFiberNode | null | undefined,
-) => TFiberParser = (typeName, getFirstChild) => async (fiber, Walker) => {
+) => TFiberParser
+
+const createBaseParser: TCreateBaseParser = (typeName, getFirstChild) => async (fiber: TFiberNode, walker: Walker) => {
   const child = getFirstChild(fiber)
   const props = {
     ...fiber.memoizedProps,
@@ -16,7 +18,7 @@ const createBaseParser: (
     fiberDebug: fiber._debugSource,
     props,
     key: fiber.key,
-    children: child ? await Walker(child) : null,
+    children: child ? await walker(child) : null,
   }
 }
 
