@@ -2,7 +2,7 @@ import { Text } from 'react-native'
 
 import createBaseRenderer from '../../lib/createBaseRenderer'
 
-const typeName = 'RNText'
+import { typeName } from './constants'
 
 const TextRenderer = {
   renderer: createBaseRenderer(Text),
