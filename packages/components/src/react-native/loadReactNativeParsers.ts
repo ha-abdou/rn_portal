@@ -6,6 +6,7 @@ import TouchableOpacityParser from './TouchableOpacity/parser'
 import ButtonParser from './Button/parser'
 import ImageParser from './Image/parser'
 import TextInputParser from './TextInput/parser'
+import SafeAreaViewParser from './SafeAreaView/parser'
 
 const loadReactNativeParsers = () => {
   addFiberParser(ViewParser.type, ViewParser.typeName, ViewParser.parser)
@@ -14,6 +15,7 @@ const loadReactNativeParsers = () => {
   addFiberParser(ButtonParser.type, ButtonParser.typeName, ButtonParser.parser)
   addFiberParser(ImageParser.type, ImageParser.typeName, ImageParser.parser)
   addFiberParser(TextInputParser.type, TextInputParser.typeName, TextInputParser.parser)
+  addFiberParser(SafeAreaViewParser.type, SafeAreaViewParser.typeName, SafeAreaViewParser.parser)
 }
 
 export default loadReactNativeParsers
